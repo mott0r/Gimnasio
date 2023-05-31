@@ -1,10 +1,12 @@
-package naranco.proyecto.gimnasio;
+package naranco.proyecto.gimnasio.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import naranco.proyecto.gimnasio.R;
 
 public class AnadirEjercicio extends AppCompatActivity {
 

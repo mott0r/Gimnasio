@@ -1,8 +1,10 @@
-package naranco.proyecto.gimnasio;
+package naranco.proyecto.gimnasio.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import naranco.proyecto.gimnasio.R;
 
 public class Progreso extends AppCompatActivity {
 
