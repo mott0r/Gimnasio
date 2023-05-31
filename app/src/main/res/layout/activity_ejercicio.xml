@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E35252"
+    tools:context=".Ejercicio">
+
+    <TextView
+        android:id="@+id/ejercicioNombre"
+        android:layout_width="156dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:background="#BAB7B7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tiempo"
+        android:layout_width="156dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="40dp"
+        android:background="#BAB7B7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etKilos"
+        android:layout_width="110dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvKg"
+        android:layout_width="28dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/kg"
+        app:layout_constraintBottom_toTopOf="@+id/etKilos"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRPE"
+        android:layout_width="59dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/rpe"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="72dp"
+        android:text="@string/sets"
+        app:layout_constraintEnd_toStartOf="@+id/tvReps"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/reps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etSets"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/etReps"
+        app:layout_constraintTop_toBottomOf="@+id/tvSets" />
+
+    <EditText
+        android:id="@+id/etReps"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReps" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="332dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvNotas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="354dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#FFC107"
+        android:text="@string/siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etNotas"
+        android:layout_width="347dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/notas"
+        app:layout_constraintBottom_toTopOf="@+id/etNotas"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerMods"
+        android:layout_width="429dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etKilos" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

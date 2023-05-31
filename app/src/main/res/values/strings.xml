@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Gimnasio</string>
+    <string name="empezar">Empezar</string>
+    <string name="add">+</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="rpe">RPE</string>
+    <string name="kg">Kg</string>
+    <string name="sets">Sets</string>
+    <string name="reps">Reps</string>
+    <string name="mods">Modificadores</string>
+    <string name="notas">Notas</string>
+    <string name="fecha">Fecha</string>
+    <string name="info">"?"</string>
+    <string name="nombre">Nombre</string>
+    <string name="movimiento">Tipo Movimiento</string>
+    <string name="equipo">Equipo</string>
+</resources>

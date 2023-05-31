@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E35252"
+    tools:context=".AnadirEjercicio">
+
+    <EditText
+        android:id="@+id/etEjercicio"
+        android:layout_width="273dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="36dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/tvMovimiento"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="39dp"
+        android:text="@string/nombre"
+        app:layout_constraintBottom_toTopOf="@+id/etEjercicio"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMovimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="39dp"
+        android:text="@string/movimiento"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerMovimiento"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerMovimiento"
+        android:layout_width="316dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvEquipo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEquipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/equipo"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerEquipo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerEquipo"
+        android:layout_width="316dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="104dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSiguiente"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="354dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#FFC107"
+        android:text="@string/siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
