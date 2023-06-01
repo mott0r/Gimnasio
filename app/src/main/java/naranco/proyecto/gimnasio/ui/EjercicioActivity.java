@@ -44,6 +44,13 @@ public class EjercicioActivity extends AppCompatActivity {
         notas = findViewById(R.id.etNotas);
     }
 
+
+//click on nombre -> lista de ejercicios
+//    en lugar de boton siguiente, finalizar
+
+
+
+
     public void siguiente(){
         String nombre = String.valueOf(ejNombre.getText());
         progDao = db.progDao();
