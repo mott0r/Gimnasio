@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Gimnasio"
         tools:targetApi="31">
         <activity
-            android:name=".ui.AnadirEjercicio"
+            android:name=".ui.AddEjercicioActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Progreso"
+            android:name=".ui.ProgresoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Ejercicio"
+            android:name=".ui.EjercicioActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ElegirEjercicio"
+            android:name=".ui.ElegirEjercicioActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

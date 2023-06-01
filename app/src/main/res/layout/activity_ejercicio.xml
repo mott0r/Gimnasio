@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E35252"
-    tools:context=".ui.Ejercicio">
+    tools:context=".ui.EjercicioActivity">
 
     <TextView
         android:id="@+id/ejercicioNombre"
@@ -54,9 +54,9 @@
         android:layout_width="59dp"
         android:layout_height="31dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/rpe"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarRpe"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -103,16 +103,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvReps" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="332dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvNotas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/btnSiguiente"
         android:layout_width="354dp"
@@ -149,11 +139,33 @@
 
     <Spinner
         android:id="@+id/spinnerMods"
-        android:layout_width="429dp"
+        android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etKilos" />
+
+    <TextView
+        android:id="@+id/tvMods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/mods"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerMods"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarRpe"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="326dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="60dp"
+        android:max="10"
+        android:progress="3"
+        app:layout_constraintBottom_toTopOf="@+id/tvNotas"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

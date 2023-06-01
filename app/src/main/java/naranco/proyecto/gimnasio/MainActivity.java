@@ -7,12 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import naranco.proyecto.gimnasio.ui.ElegirEjercicio;
+import naranco.proyecto.gimnasio.ui.ElegirEjercicioActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button empezar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         inicio();
     }
 
+
     public void inicio(){
         empezar = findViewById(R.id.btn_addEjercicio);
     }
 
     public void empezar(View v){
-        Intent intent = new Intent(this, ElegirEjercicio.class);
+        Intent intent = new Intent(this, ElegirEjercicioActivity.class);
         startActivity(intent);
     }
 }

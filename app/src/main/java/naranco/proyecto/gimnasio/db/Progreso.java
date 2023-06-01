@@ -1,13 +1,18 @@
 package naranco.proyecto.gimnasio.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(primaryKeys = {"fecha", "ejId", "setNum"})
+@Entity(primaryKeys = {"fecha", "ejId", "setNum"}, tableName = "progreso")
 public class Progreso {
-
+    @NonNull
     public String fecha;
+    @NonNull
+
     public int ejId;
+    @NonNull
+
     public int setNum;
     public int reps;
     public float rpe;

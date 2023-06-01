@@ -1,11 +1,14 @@
 package naranco.proyecto.gimnasio.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "ejercicios")
 public class Ejercicio {
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     public int ejercicioId;
 
     public String nombre;
@@ -14,10 +17,15 @@ public class Ejercicio {
 
     public String equipo;
 
+    @Ignore
     public Ejercicio(String nombre, String movimiento, String equipo) {
+//        this.ejercicioId = ejercicioId;
         this.nombre = nombre;
         this.movimiento = movimiento;
         this.equipo = equipo;
+    }
+    public Ejercicio(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEjercicioId() {
