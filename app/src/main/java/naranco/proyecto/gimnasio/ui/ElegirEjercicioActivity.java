@@ -20,6 +20,7 @@ import naranco.proyecto.gimnasio.db.GimnasioDatabase;
 public class ElegirEjercicioActivity extends AppCompatActivity {
     Button addEx;
     private String nombreEj;
+    private int ejId;
     public GimnasioDatabase db;
     private EjercicioDao ejDao;
     private TextView ejList;
@@ -61,9 +62,11 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
     public void cargarEjercicios(){
         ejs = ejDao.getAll();
     }
+//    public String nombrePorId(int id){
+//        return nombreEj = ejDao.getNameById(id);
+//    }
 
     public void listarEjercicios(){
-//        ejList.setText(ejs.get(ejs.size()-1).getNombre());
         linearLayout = findViewById(R.id.linearLayout);
 
         for(Ejercicio x : ejs){

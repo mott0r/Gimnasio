@@ -7,30 +7,30 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "ejercicios")
 public class Ejercicio {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    public int ejercicioId;
-
     public String nombre;
+//    public int ejercicioId;
+
 
     public String movimiento;
 
     public String equipo;
 
-    @Ignore
     public Ejercicio(String nombre, String movimiento, String equipo) {
 //        this.ejercicioId = ejercicioId;
         this.nombre = nombre;
         this.movimiento = movimiento;
         this.equipo = equipo;
     }
+    @Ignore
     public Ejercicio(String nombre) {
         this.nombre = nombre;
     }
 
-    public int getEjercicioId() {
-        return ejercicioId;
-    }
+//    public int getEjercicioId() {
+//        return ejercicioId;
+//    }
 
     public String getNombre() {
         return nombre;

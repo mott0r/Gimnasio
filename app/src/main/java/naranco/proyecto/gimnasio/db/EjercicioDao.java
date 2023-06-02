@@ -18,6 +18,8 @@ public interface EjercicioDao {
 //
 //    @Query("SELECT * FROM progreso WHERE fecha LIKE :dia LIMIT 1")
 //    ProgresoActivity findByDia(String dia);
+//    @Query("SELECT nombre FROM ejercicios WHERE ejercicioId LIKE :ejId")
+//    String getNameById(int ejId);
 
     @Insert
     void insert(Ejercicio ej);

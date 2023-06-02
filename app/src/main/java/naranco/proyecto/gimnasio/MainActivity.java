@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         inicio();
     }
 
-
     public void inicio(){
         empezar = findViewById(R.id.btn_addEjercicio);
     }
