@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Ejercicio.class, Progreso.class}, version = 1)
+@Database(entities = {Ejercicio.class, Progreso.class}, version = 4)
 public abstract class GimnasioDatabase extends RoomDatabase {
     public abstract EjercicioDao ejDao();
     public abstract ProgresoDao progDao();
@@ -15,7 +15,9 @@ public abstract class GimnasioDatabase extends RoomDatabase {
     public static GimnasioDatabase openDB(Context context){
         // allowMainThreadQueries() not recommended
         db = Room.databaseBuilder(context,
-                GimnasioDatabase.class, "GimnasioDb").allowMainThreadQueries().build();
+                GimnasioDatabase.class, "GimnasioDb").allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
         return db;
     }
 

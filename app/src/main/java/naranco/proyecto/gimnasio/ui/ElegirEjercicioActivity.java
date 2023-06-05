@@ -20,10 +20,8 @@ import naranco.proyecto.gimnasio.db.GimnasioDatabase;
 public class ElegirEjercicioActivity extends AppCompatActivity {
     Button addEx;
     private String nombreEj;
-    private int ejId;
     public GimnasioDatabase db;
     private EjercicioDao ejDao;
-    private TextView ejList;
     private List<Ejercicio> ejs;
     private LinearLayout linearLayout;
 
@@ -32,7 +30,6 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elegir_ejercicio);
         addEx = findViewById(R.id.btn_addEjercicio);
-        ejList = findViewById(R.id.ejsList);
 
         openDB();
         fillDB();
@@ -42,6 +39,7 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         ejs.clear();
+        limpiarLayout();
         cargarEjercicios();
         listarEjercicios();
     }
@@ -62,25 +60,29 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
     public void cargarEjercicios(){
         ejs = ejDao.getAll();
     }
-//    public String nombrePorId(int id){
-//        return nombreEj = ejDao.getNameById(id);
-//    }
-
     public void listarEjercicios(){
         linearLayout = findViewById(R.id.linearLayout);
 
         for(Ejercicio x : ejs){
             TextView newTextView = new TextView(this);
             newTextView.setText(x.getNombre());
-            newTextView.setOnClickListener(new View.OnClickListener(){
+            newTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v){
+                public void onClick(View v) {
+                    //ejercicioactivity de ese ejercicio
                     nombreEj = (String) newTextView.getText();
                     rutina();
                 }
             });
             linearLayout.addView(newTextView);
         }
+    }
+    public void limpiarLayout(){
+        linearLayout.removeAllViewsInLayout();
+    }
+
+    public void lastDay(){
+
     }
 
     public void rutina(){

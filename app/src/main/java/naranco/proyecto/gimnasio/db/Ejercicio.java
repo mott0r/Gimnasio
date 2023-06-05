@@ -11,8 +11,6 @@ public class Ejercicio {
     @NonNull
     public String nombre;
 //    public int ejercicioId;
-
-
     public String movimiento;
 
     public String equipo;

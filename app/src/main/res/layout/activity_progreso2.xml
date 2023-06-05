@@ -8,17 +8,31 @@
     tools:context=".ui.ProgresoActivity">
 
     <ScrollView
-        android:layout_width="375dp"
-        android:layout_height="655dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/scrollView3"
+        android:layout_width="374dp"
+        android:layout_height="572dp"
+        android:layout_marginTop="64dp"
         android:background="#BAB7B7"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linLayoutProg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"/>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/tvEj"
+        android:layout_width="369dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

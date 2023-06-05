@@ -16,4 +16,9 @@
     <string name="movimiento">Tipo Movimiento</string>
     <string name="equipo">Equipo</string>
     <string name="fin">Finalizar</string>
+    <string name="last">Último</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="deleteAll">Borrar Todo</string>
+
 </resources>

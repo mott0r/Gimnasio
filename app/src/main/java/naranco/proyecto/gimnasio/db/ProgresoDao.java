@@ -12,6 +12,10 @@ import java.util.List;
 public interface ProgresoDao {
     @Query("SELECT * FROM progreso")
     List<Progreso> getAll();
+    @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj")
+    List<Progreso> getAllFromName(String nombreEj);
+    @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
+    Progreso getLastDay(String nombreEj);
 
 //    @Query("SELECT * FROM progreso WHERE fecha IN (:dia)")
 //    List<ProgresoActivity> loadAllByFecha(String[] dia);

@@ -4,25 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(primaryKeys = {"fecha", "ejId", "setNum"}, tableName = "progreso")
+@Entity(primaryKeys = {"fecha", "nombreEj", "setNum"}, tableName = "progreso")
 public class Progreso {
     @NonNull
     public String fecha;
     @NonNull
-
-    public int ejId;
+    public String nombreEj;
     @NonNull
-
     public int setNum;
     public int reps;
-    public float rpe;
-    public float peso;
+    public double rpe;
+    public double peso;
     public String notas;
     public String mods;
 
-    public Progreso(String fecha, int ejId, int setNum, int reps, float rpe, float peso, String notas, String mods) {
+    public Progreso(String fecha, String nombreEj, int setNum, int reps, double rpe, double peso, String notas, String mods) {
         this.fecha = fecha;
-        this.ejId = ejId;
+        this.nombreEj = nombreEj;
         this.setNum = setNum;
         this.reps = reps;
         this.rpe = rpe;
@@ -39,12 +37,12 @@ public class Progreso {
         this.fecha = fecha;
     }
 
-    public int getEjId() {
-        return ejId;
+    public String getNombreEj() {
+        return nombreEj;
     }
 
-    public void setEjId(int ejId) {
-        this.ejId = ejId;
+    public void setNombreEj(String nombreEj) {
+        this.nombreEj = nombreEj;
     }
 
     public int getSetNum() {
@@ -63,19 +61,19 @@ public class Progreso {
         this.reps = reps;
     }
 
-    public float getRpe() {
+    public double getRpe() {
         return rpe;
     }
 
-    public void setRpe(float rpe) {
+    public void setRpe(double rpe) {
         this.rpe = rpe;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
