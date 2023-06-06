@@ -44,6 +44,7 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_update_delete);
         openDB(this);
         progDao = db.progDao();
+//        Recoje los datos enviados por ProgresoActivity
         Intent intent = getIntent();
         nombreEj = intent.getExtras().getString("ejNombre");
         num_set = intent.getExtras().getInt("setNum");
@@ -81,11 +82,12 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
     }
     //TODO
     // actualizar la lista despues de onclick
+//    Actualiza el ejercicio con los valores
     public void editar(View view){
         // alert seguro?
         update();
     }
-
+// Borra la instacia del ejercicio
     public void borrar(View view){
         // alert seguro?
         remove();
@@ -108,6 +110,8 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
         progDao.delete(prog);
         Toast.makeText(this, "Eliminado!", Toast.LENGTH_LONG);
     }
+
+//    Inicia y rellena el spinner con los mods
     public void fillSpinnerMods() {
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -118,7 +122,7 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
         mods.setAdapter(adapter);
         mods.setOnItemSelectedListener(this);
     }
-
+// Recoge el elemento seleccionado en el spinner y guarda el valor
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         set_mod = (String) mods.getItemAtPosition(pos);
@@ -185,12 +189,15 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
                 }
         );
     }
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
+//  Para pruebas con el seekbar
+//
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//        super.onPointerCaptureChanged(hasCapture);
+//    }
+//
+//  Devuelve la fecha formateada de "hoy"
     public String getFecha(){
-//        String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("E, MMM dd yyyy"));
         String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd MMM yy"));
         return formattedDate;
     }

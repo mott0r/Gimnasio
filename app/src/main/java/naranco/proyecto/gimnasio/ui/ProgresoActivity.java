@@ -40,11 +40,16 @@ public class ProgresoActivity extends AppCompatActivity implements Serializable 
         cargarProgreso();
         listarProgreso();
     }
+//    Abre la base de datos y carga el objeto de acceso que llama a un metodo que devuelve
+//    todos los datos del ejercicio que se estaba haciendo en una lista
     public void cargarProgreso(){
         db = GimnasioDatabase.openDB(this);
         progDao = db.progDao();
         prog = progDao.getAllFromName(nombreEj);
     }
+//    Crea un textView por cada obejto devuelto por la lista
+//    Imprime los datos
+//    y genera un metodo para saber cuando se pulsa un textView
     public void listarProgreso(){
         linearLayout = findViewById(R.id.linLayoutProg);
 
@@ -65,6 +70,9 @@ public class ProgresoActivity extends AppCompatActivity implements Serializable 
             linearLayout.addView(newTextView);
         }
     }
+
+//    Abre una actividad que manda los valores del textView seleccionado
+//    para editarlo o borrarlo
     public void editDelete(){
         Intent i = new Intent(ProgresoActivity.this, UpdateDeleteActivity.class);
         i.putExtra("ejNombre", progresoExtra.getNombreEj());

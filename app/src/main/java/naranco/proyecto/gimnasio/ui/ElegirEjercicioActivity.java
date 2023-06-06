@@ -40,6 +40,7 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         cargarEjercicios();
         listarEjercicios();
     }
+//    Limpia el layout cuando se reinicia la actividad para evitar duplicados
     protected void onRestart() {
         super.onRestart();
         ejs.clear();
@@ -47,11 +48,14 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         cargarEjercicios();
         listarEjercicios();
     }
+//    Inicia la base de datos y carga el objeto con el que nos comunicamos con ella
     public void openDB(){
         db = GimnasioDatabase.openDB(this);
         ejDao = db.ejDao();
     }
 
+//  Mete ejercicios en la base de datos para comprobar funcionalidad
+//    Irrelevante, pero se mantiene para futuras pruebas
     public void fillDB(){
 //        Ejercicio ej1 = new Ejercicio("BenchPress", "Push", "Barbell");
 //        Ejercicio ej2 = new Ejercicio("Squat", "Push", "Barbell");
@@ -60,9 +64,15 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
 //        ejDao.insert(ej2);
 //        ejDao.insert(ej3);
     }
+//    Hace una llamada al objeto para contactar con la base de datos y
+//    recoge una lista con todos los ejercicios
     public void cargarEjercicios(){
         ejs = ejDao.getAll();
     }
+
+//    Con la lista de todos los ejercicios del metodo "cargarEjercicios",
+//    crea un textView con cada fila
+//    adjunta a cada textView un evento para detectar cuando el usuario lo toca
     public void listarEjercicios(){
         linearLayout = findViewById(R.id.linearLayout);
 
@@ -73,7 +83,6 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //ejercicioactivity de ese ejercicio
-                    registerForContextMenu(v);
                     nombreEj = x.getNombre();
                     rutina();
                 }
@@ -81,19 +90,19 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
             linearLayout.addView(newTextView);
         }
     }
-
-    public void limpiarLayout(){
-        linearLayout.removeAllViewsInLayout();
-    }
-
+//  Abre la actividad "Ejercicio", donde el usuario mete sus progresos por ejercicio y set
     public void rutina(){
         Intent intent = new Intent(this, EjercicioActivity.class);
         intent.putExtra("ejercicio", nombreEj);
         startActivity(intent);
     }
-
+// Abre una actividad para que el usuario pueda anadir ejercicios
     public void addEjercicio(View view){
         Intent intent = new Intent(this, AddEjercicioActivity.class);
         startActivity(intent);
+    }
+// Quita todos los textViews agregados en "listarEjercicios"
+    public void limpiarLayout(){
+        linearLayout.removeAllViewsInLayout();
     }
 }

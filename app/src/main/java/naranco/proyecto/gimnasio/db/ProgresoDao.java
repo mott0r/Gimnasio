@@ -12,10 +12,16 @@ import java.util.List;
 public interface ProgresoDao {
     @Query("SELECT * FROM progreso")
     List<Progreso> getAll();
+
+//    devuelve el progreso entero del ejercicio metido
     @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj")
     List<Progreso> getAllFromName(String nombreEj);
+
+//    Devuelve la ultima instacia guardada del ejercicio
     @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
     Progreso getLastDay(String nombreEj);
+
+//    Devuelve el numero de sets de la ultima instacia del ejercicio
     @Query("SELECT setNum FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
     int getNumSet(String nombreEj);
 

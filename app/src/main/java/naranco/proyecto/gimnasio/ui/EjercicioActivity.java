@@ -31,9 +31,8 @@ import naranco.proyecto.gimnasio.db.ProgresoDao;
 
 public class EjercicioActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private TextView ejNombre, tiempo, set, lastDay;
-    private EditText sets, reps, kilos, notas;
+    private EditText reps, kilos, notas;
     private int num_set;
-    private long tempo;
     private double rpeDone = 7.0, pesoDone = 0;
     private String fecha, nombreEj, notes, set_mod;
     private int setNum, repsDone = 0;
@@ -77,34 +76,41 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         notas = findViewById(R.id.etNotas);
 
         alerta = MediaPlayer.create(this, R.raw.alerta);
-
     }
+
+    // Crea y comienza el temporizador de descando por cada ejercicio
+//    90s reduciendo 1s
     public void startTemporizador() {
         new CountDownTimer(90000, 1000) {
-
+            // Lo que hace el temporizador con cada intervalo de cuenta atras (1s)
+            //Muestra el contenido del temporizador en el EditText "tiempo"
             public void onTick(long millisUntilFinished) {
                 tiempo.setText("descanso: " + millisUntilFinished / 1000);
             }
+            // Cuando el temporizador termina, crea una alerta y reproduce un aviso sonoro
             public void onFinish() {
                 tiempo.setText("Fin del descanso");
                 crearAlerta("Fin del descanso", "");
-                lanzarMelodia();
+                lanzarAlerta();
             }
         }.start();
     }
-    private void lanzarMelodia() {
+//    Si la alerta no esta sonando, lanza un aviso sonoro
+    private void lanzarAlerta() {
         if (!alerta.isPlaying()) {
             alerta.start();
         }
     }
-
-    private void pararMelodia() {
+    // Metodo para para la alerta
+//    Creado por prevencion, sin uso.
+    private void pararAlerta() {
         /* Paramos la música sólo si está sonando */
         if (alerta.isPlaying()) {
             alerta.stop();
         }
     }
-
+// Este metodo es un constructor de alertas
+//    Creado al principio para pruebas, pero solo se usa una vez
     public void crearAlerta(String titulo, String mensaje){
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setTitle(titulo)
@@ -113,9 +119,12 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                 .create()
                 .show();
     }
+//    Llama al objeto de acceso a la base de datos y recoge el numero del ultimo set realizado
+//    Usado para evitar tener sets duplicados ya que es una clave primaria
     public void numSetDateEx(){
         num_set = progDao.getNumSet(nombreEj) + 1;
     }
+//    Metodo para cargar opciones en el spinner de los modificadores de set
     public void fillSpinnerMods() {
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -126,6 +135,8 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         mods.setAdapter(adapter);
         mods.setOnItemSelectedListener(this);
     }
+//    Mediante una llamada al objecto de acceso, recoge la ultima instancia del ejercicio
+//    para mostrarlo como referencia mientras se hace el mismo ejercicio mas adelante en el timepo
     public void getLastDay(){
         Progreso x = progDao.getLastDay(nombreEj);
         if(x != null) {
@@ -138,6 +149,9 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
             lastDay.setText("Sin datos.");
         }
     }
+
+//    Cuando se hace click en el ultimo dia, recoge el nombre del ejercicio
+//    y lo manda al metodo verProgreso
     public void onClickLastDay() {
         lastDay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,13 +162,18 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
             }
         });
     }
+//    Recoge el modificador seleccionado por el usuario y lo guarda
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
         set_mod = (String) mods.getItemAtPosition(pos);
 //        Toast.makeText(getApplicationContext(),eoeo,Toast.LENGTH_LONG).show();
     }
+//    Meteodo usado para hacer pruebas cuando no se selccionaba ningun elemento
+//    sin uso
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {}
+
+//    Este metodo inicia el seekbar para el RPE
     public void setSeekBar(){
         rpe.setOnSeekBarChangeListener(
             new SeekBar.OnSeekBarChangeListener() {
@@ -214,16 +233,22 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
             }
         );
     }
+//    Recoge y formatea la fecha de "hoy" automaticamente
     public String getFecha(){
-//        String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("E, MMM dd yyyy"));
         String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd MMM yy"));
         return formattedDate;
     }
+//    Lanza una actividad que muestra el progreso del ejercicio
     public void verProgreso(String ejName){
         Intent intent = new Intent(this, ProgresoActivity.class);
         intent.putExtra("nombreEj", ejName);
         startActivity(intent);
     }
+
+//    Comprueba que las repeticiones y el peso no estan vacios
+//    Si lo estan manda un aviso
+//    Si no estan vacios da valor a las variables para crear un objeto e insertarlo en la BD
+//    Despues limpiar los valores y reinicia el temporizador, para el siguiente set
     public void siguiente(View view){
 
         if (reps.getText().toString().isEmpty() || kilos.getText().toString().isEmpty()) {
@@ -247,6 +272,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
             startTemporizador();
         }
     }
+//    Pone a 0 el peso y las repeticiones para que no se sumen con las del siguiente set
     public void clearAll(){
         repsDone = 0;
         pesoDone = 0;

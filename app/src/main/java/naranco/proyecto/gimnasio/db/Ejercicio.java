@@ -21,6 +21,8 @@ public class Ejercicio {
         this.movimiento = movimiento;
         this.equipo = equipo;
     }
+//    Ignora este constructor usado para pruebas
+//    se mantiene para futuro
     @Ignore
     public Ejercicio(String nombre) {
         this.nombre = nombre;

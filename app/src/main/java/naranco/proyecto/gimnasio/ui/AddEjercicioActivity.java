@@ -34,6 +34,9 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
 
         fin = findViewById(R.id.btnFinalizar);
     }
+
+//    Mete los valores que van a usar los dos spinners de la actividad para
+//            que el usuario pueda personalizar los ejercicios que cree
     public void fillSpinners() {
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterMov = ArrayAdapter.createFromResource(this,
@@ -50,15 +53,22 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
         movimiento.setOnItemSelectedListener(this);
         equipo.setOnItemSelectedListener(this);
     }
-
+//  Metodo que recoge el elemento seleccionado de un spinner
+//    Deprecado pero se mantiene para futuras pruebas
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
 //        String eoeo = (String) movimiento.getItemAtPosition(pos);
 //        Toast.makeText(getApplicationContext(),eoeo,Toast.LENGTH_LONG).show();
     }
+    // Comportamiento del spinner cuando no se selecciona ningun elemento
+    //    Deprecado pero se mantiene para futuras pruebas
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {}
 
+    // Recoge los valores que metio el usuario y crea e inserta el nuevo
+//    ejercicio en la base de datos
+//    cierra la actividad cuando se pulsa el boton "Finalizar"
     public void fin(View view){
         String nombre = String.valueOf(ejNombre.getText());
         String mov = (String) movimiento.getSelectedItem();
