@@ -5,9 +5,12 @@ import static naranco.proyecto.gimnasio.db.GimnasioDatabase.openDB;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,14 +33,15 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     private TextView ejNombre, tiempo, set, lastDay;
     private EditText sets, reps, kilos, notas;
     private int num_set;
-    private double rpeDone,pesoDone;
+    private long tempo;
+    private double rpeDone = 7.0, pesoDone = 0;
     private String fecha, nombreEj, notes, set_mod;
-    private int setNum, repsDone;
+    private int setNum, repsDone = 0;
     private Spinner mods;
     private SeekBar rpe;
     private Button fin;
     private ProgresoDao progDao;
-
+    private MediaPlayer alerta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +55,16 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         ejNombre = findViewById(R.id.ejercicioNombre);
         ejNombre.setText(nombreEj);
 
-//        tiempo = findViewById(R.id.tiempo);
+        tiempo = findViewById(R.id.tiempo);
+        startTemporizador();
+
         set = findViewById(R.id.tvSet);
-        num_set = 1;
+        numSetDateEx();
         set.setText(String.valueOf(num_set));
 
         reps = findViewById(R.id.etReps);
         kilos = findViewById(R.id.etKilos);
+
         lastDay = findViewById(R.id.lastDay);
 
         getLastDay();
@@ -68,11 +75,47 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         setSeekBar();
         fin = findViewById(R.id.btnFinalizar);
         notas = findViewById(R.id.etNotas);
+
+        alerta = MediaPlayer.create(this, R.raw.alerta);
+
+    }
+    public void startTemporizador() {
+        new CountDownTimer(90000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                tiempo.setText("descanso: " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                tiempo.setText("Fin del descanso");
+                crearAlerta("Fin del descanso", "");
+                lanzarMelodia();
+            }
+        }.start();
+    }
+    private void lanzarMelodia() {
+        if (!alerta.isPlaying()) {
+            alerta.start();
+        }
     }
 
-//  click on nombre -> lista de ejercicios
-//    en lugar de boton siguiente, finalizar
+    private void pararMelodia() {
+        /* Paramos la música sólo si está sonando */
+        if (alerta.isPlaying()) {
+            alerta.stop();
+        }
+    }
 
+    public void crearAlerta(String titulo, String mensaje){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle(titulo)
+                .setMessage(mensaje)
+                .setPositiveButton("Aceptar", null)
+                .create()
+                .show();
+    }
+    public void numSetDateEx(){
+        num_set = progDao.getNumSet(nombreEj) + 1;
+    }
     public void fillSpinnerMods() {
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -90,7 +133,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                     x.getFecha() + " " + x.getSetNum() +
                             x.getReps() + " @ " + x.getPeso() + "kg" +
                             " RPE: " + x.getRpe() + " " + x.getMods() + "\n" +
-                            x.getNotas() + "\n");
+                            x.getNotas());
         } else {
             lastDay.setText("Sin datos.");
         }
@@ -125,31 +168,31 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                     prog += 1;
 //                    double progress = (double) prog;
                     switch(prog) {
-                        case 1:
+                        case 0:
                             rpeDone = (double) 7;
                             break;
 
-                        case 2:
+                        case 1:
                             rpeDone = (double) 7.5;
                             break;
 
-                        case 3:
+                        case 2:
                             rpeDone = (double) 8;
                             break;
 
-                        case 4:
+                        case 3:
                             rpeDone = (double) 8.5;
                             break;
 
-                        case 5:
+                        case 4:
                             rpeDone = (double) 9;
                             break;
 
-                        case 6:
+                        case 5:
                             rpeDone = (double) 9.5;
                             break;
 
-                        case 7:
+                        case 6:
                             rpeDone = (double) 10;
                             break;
                     }
@@ -182,22 +225,28 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         startActivity(intent);
     }
     public void siguiente(View view){
-        fecha = getFecha();
-        nombreEj = String.valueOf(ejNombre.getText());
-        setNum = num_set;
-        repsDone = Integer.valueOf(String.valueOf(reps.getText()));
-        pesoDone = Double.valueOf(String.valueOf(kilos.getText()));
-        notes = String.valueOf(notas.getText()).trim();
-        Progreso progreso = new Progreso(fecha, nombreEj, setNum, repsDone, rpeDone, pesoDone, notes, set_mod);
 
-        progDao.insert(progreso);
+        if (reps.getText().toString().isEmpty() || kilos.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Debes introducir peso y reps",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            fecha = getFecha();
+            nombreEj = String.valueOf(ejNombre.getText());
+            setNum = num_set;
+            repsDone = Integer.parseInt(String.valueOf(reps.getText()));
+            pesoDone = Double.parseDouble(String.valueOf(kilos.getText()));
+            notes = String.valueOf(notas.getText()).trim();
+            Progreso progreso = new Progreso(fecha, nombreEj, setNum, repsDone, rpeDone, pesoDone, notes, set_mod);
 
-        num_set++;
-        set.setText(String.valueOf(num_set));
-        clearAll();
-//        finish();
+            progDao.insert(progreso);
+
+            Toast.makeText(this, "Set agregado!", Toast.LENGTH_LONG).show();
+            num_set++;
+            set.setText(String.valueOf(num_set));
+            clearAll();
+            startTemporizador();
+        }
     }
-
     public void clearAll(){
         repsDone = 0;
         pesoDone = 0;

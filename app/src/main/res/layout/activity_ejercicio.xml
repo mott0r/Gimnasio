@@ -149,10 +149,11 @@
         android:layout_height="32dp"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="92dp"
-        android:max="6"
+        android:max="7"
         android:progress="1"
         android:progressTint="#FFD54F"
         android:rotation="0"
+        android:splitTrack="true"
         app:layout_constraintBottom_toTopOf="@+id/tvNotas"
         app:layout_constraintStart_toStartOf="parent" />
 

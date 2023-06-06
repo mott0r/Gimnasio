@@ -45,7 +45,7 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
         adapterEq.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         movimiento.setAdapter(adapterMov);
-        equipo.setAdapter(adapterMov);
+        equipo.setAdapter(adapterEq);
         // Set listener to the spinner
         movimiento.setOnItemSelectedListener(this);
         equipo.setOnItemSelectedListener(this);

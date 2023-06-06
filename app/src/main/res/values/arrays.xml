@@ -3,31 +3,32 @@
     <string-array name="mods">
         <item>Ninguno</item>
         <item>SuperSet</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Drop Set</item>
+        <item>Cluster Set</item>
+        <item>Negative</item>
+        <item>Speed</item>
+        <item>Forced</item>
     </string-array>
     <string-array name="movimientos">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Push</item>
+        <item>Pull</item>
+        <item>Legs</item>
     </string-array>
     <string-array name="equipo">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>Barra 20kg</item>
+        <item>Barra 15kg</item>
+        <item>Barra 10kg</item>
+        <item>Barra EZ</item>
+        <item>Mancuernas</item>
+        <item>Máquina</item>
+        <item>Smith</item>
+        <item>Calistenia</item>
     </string-array>
+
+    <string-array name="editDelete">
+        <item>Editar</item>
+        <item>Borrar</item>
+        <item>Cancelar</item>
+    </string-array>
+
 </resources>

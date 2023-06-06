@@ -16,6 +16,8 @@ public interface ProgresoDao {
     List<Progreso> getAllFromName(String nombreEj);
     @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
     Progreso getLastDay(String nombreEj);
+    @Query("SELECT setNum FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
+    int getNumSet(String nombreEj);
 
 //    @Query("SELECT * FROM progreso WHERE fecha IN (:dia)")
 //    List<ProgresoActivity> loadAllByFecha(String[] dia);

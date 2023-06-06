@@ -1,8 +1,12 @@
 package naranco.proyecto.gimnasio.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+import static android.app.PendingIntent.getActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +47,6 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         cargarEjercicios();
         listarEjercicios();
     }
-
     public void openDB(){
         db = GimnasioDatabase.openDB(this);
         ejDao = db.ejDao();
@@ -65,24 +68,22 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
 
         for(Ejercicio x : ejs){
             TextView newTextView = new TextView(this);
-            newTextView.setText(x.getNombre());
+            newTextView.setText(x.getNombre() + "    " +x.getMovimiento() + "    " + x.getEquipo());
             newTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //ejercicioactivity de ese ejercicio
-                    nombreEj = (String) newTextView.getText();
+                    registerForContextMenu(v);
+                    nombreEj = x.getNombre();
                     rutina();
                 }
             });
             linearLayout.addView(newTextView);
         }
     }
+
     public void limpiarLayout(){
         linearLayout.removeAllViewsInLayout();
-    }
-
-    public void lastDay(){
-
     }
 
     public void rutina(){

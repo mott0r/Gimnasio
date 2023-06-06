@@ -16,9 +16,6 @@
             android:name=".ui.UpdateDeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditDelete1Activity"
-            android:exported="false" />
-        <activity
             android:name=".ui.AddEjercicioActivity"
             android:exported="false" />
         <activity
