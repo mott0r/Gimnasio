@@ -2,25 +2,22 @@ package naranco.proyecto.gimnasio.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.List;
 
 import naranco.proyecto.gimnasio.R;
-import naranco.proyecto.gimnasio.db.Ejercicio;
-import naranco.proyecto.gimnasio.db.EjercicioDao;
 import naranco.proyecto.gimnasio.db.GimnasioDatabase;
 import naranco.proyecto.gimnasio.db.Progreso;
 import naranco.proyecto.gimnasio.db.ProgresoDao;
 
-public class ProgresoActivity extends AppCompatActivity {
+public class ProgresoActivity extends AppCompatActivity implements Serializable {
 
     public GimnasioDatabase db;
     private ProgresoDao progDao;
@@ -29,7 +26,6 @@ public class ProgresoActivity extends AppCompatActivity {
     private TextView tvEj;
     private List<Progreso> prog;
     private String nombreEj;
-    private DialogInterface.OnClickListener dialogClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +51,7 @@ public class ProgresoActivity extends AppCompatActivity {
         for(Progreso x : prog){
             TextView newTextView = new TextView(this);
             newTextView.setText(
-                    x.getFecha() + " " + x.getSetNum()+
+                    x.getFecha() + " " + x.getSetNum() + " " +
                     x.getReps() + " @ " + x.getPeso() + "kg" +
                     " RPE: " + x.getRpe() + " " + x.getMods() +"\n"+
                     x.getNotas()+"\n");
@@ -70,8 +66,15 @@ public class ProgresoActivity extends AppCompatActivity {
         }
     }
     public void editDelete(){
-        Intent i = new Intent(this, EditDeleteActivity.class);
-//        i.putExtra("ProgresoExtra", progresoExtra);
+        Intent i = new Intent(ProgresoActivity.this, UpdateDeleteActivity.class);
+        i.putExtra("ejNombre", progresoExtra.getNombreEj());
+        i.putExtra("setNum", progresoExtra.getSetNum());
+        i.putExtra("reps", progresoExtra.getReps());
+        i.putExtra("peso", progresoExtra.getPeso());
+        i.putExtra("rpe", progresoExtra.getRpe());
+        i.putExtra("mods", progresoExtra.getMods());
+        i.putExtra("notas", progresoExtra.getNotas());
+        i.putExtra("fecha", progresoExtra.getFecha());
         startActivity(i);
     }
 }

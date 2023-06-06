@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Gimnasio"
         tools:targetApi="31">
         <activity
-            android:name=".ui.EditDeleteActivity"
+            android:name=".ui.UpdateDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EditDelete1Activity"
             android:exported="false" />
         <activity
             android:name=".ui.AddEjercicioActivity"

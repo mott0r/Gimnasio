@@ -4,8 +4,6 @@ import static naranco.proyecto.gimnasio.db.GimnasioDatabase.db;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,16 +17,13 @@ import android.widget.Toast;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 import naranco.proyecto.gimnasio.R;
-import naranco.proyecto.gimnasio.db.GimnasioDatabase;
 import naranco.proyecto.gimnasio.db.Progreso;
 import naranco.proyecto.gimnasio.db.ProgresoDao;
-import naranco.proyecto.gimnasio.ui.ProgresoActivity;
 
-public class EditDeleteActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private TextView ejNombre, tiempo, set, lastDay;
+public class EditDelete1Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private TextView ejNombre, tiempo, set;
     private EditText sets, reps, kilos, notas;
     private int num_set;
     private double rpeDone,pesoDone;
@@ -51,7 +46,6 @@ public class EditDeleteActivity extends AppCompatActivity implements AdapterView
         set = findViewById(R.id.tvSet);
         reps = findViewById(R.id.etReps);
         kilos = findViewById(R.id.etKilos);
-        lastDay = findViewById(R.id.lastDay);
         mods = findViewById(R.id.spinnerMods);
         fillSpinnerMods();
         rpe = findViewById(R.id.seekBarRpe);

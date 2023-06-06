@@ -1,6 +1,7 @@
 package naranco.proyecto.gimnasio.ui;
 
 import static naranco.proyecto.gimnasio.db.GimnasioDatabase.db;
+import static naranco.proyecto.gimnasio.db.GimnasioDatabase.openDB;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,7 +42,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejercicio);
-
+        openDB(this);
         progDao = db.progDao();
 
         Intent intent = getIntent();
