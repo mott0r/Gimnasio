@@ -22,6 +22,10 @@ public interface EjercicioDao {
 //    @Query("SELECT nombre FROM ejercicios WHERE ejercicioId LIKE :ejId")
 //    String getNameById(int ejId);
 
+//  Elimina toda la tabla
+    @Query("DELETE FROM ejercicios")
+    void deleteALlEjercicios();
+
     @Insert
     void insert(Ejercicio ej);
 

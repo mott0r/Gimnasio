@@ -55,7 +55,6 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         ejNombre.setText(nombreEj);
 
         tiempo = findViewById(R.id.tiempo);
-        startTemporizador();
 
         set = findViewById(R.id.tvSet);
         numSetDateEx();
@@ -81,11 +80,11 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     // Crea y comienza el temporizador de descando por cada ejercicio
 //    90s reduciendo 1s
     public void startTemporizador() {
-        new CountDownTimer(90000, 1000) {
+        new CountDownTimer(9000, 1000) {
             // Lo que hace el temporizador con cada intervalo de cuenta atras (1s)
             //Muestra el contenido del temporizador en el EditText "tiempo"
             public void onTick(long millisUntilFinished) {
-                tiempo.setText("descanso: " + millisUntilFinished / 1000);
+                tiempo.setText("Descanso: " + millisUntilFinished / 1000);
             }
             // Cuando el temporizador termina, crea una alerta y reproduce un aviso sonoro
             public void onFinish() {
@@ -110,7 +109,6 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
         }
     }
 // Este metodo es un constructor de alertas
-//    Creado al principio para pruebas, pero solo se usa una vez
     public void crearAlerta(String titulo, String mensaje){
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setTitle(titulo)
@@ -174,6 +172,8 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     public void onNothingSelected(AdapterView<?> adapterView) {}
 
 //    Este metodo inicia el seekbar para el RPE
+
+    // TODO fix this fucker + add explanation
     public void setSeekBar(){
         rpe.setOnSeekBarChangeListener(
             new SeekBar.OnSeekBarChangeListener() {
@@ -185,7 +185,6 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                     // with the value of progress
                     // 10, 9.5, 9, 8.5, 8, 7.5, 7 = 7
                     prog += 1;
-//                    double progress = (double) prog;
                     switch(prog) {
                         case 0:
                             rpeDone = (double) 7;
@@ -252,8 +251,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     public void siguiente(View view){
 
         if (reps.getText().toString().isEmpty() || kilos.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Debes introducir peso y reps",
-                    Toast.LENGTH_SHORT).show();
+            crearAlerta("No se puede continuar", "Debes introducir peso y reps");
         } else {
             fecha = getFecha();
             nombreEj = String.valueOf(ejNombre.getText());
@@ -270,6 +268,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
             set.setText(String.valueOf(num_set));
             clearAll();
             startTemporizador();
+            getLastDay();
         }
     }
 //    Pone a 0 el peso y las repeticiones para que no se sumen con las del siguiente set

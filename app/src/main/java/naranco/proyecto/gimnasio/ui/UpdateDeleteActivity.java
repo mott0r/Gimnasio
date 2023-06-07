@@ -5,6 +5,8 @@ import static naranco.proyecto.gimnasio.db.GimnasioDatabase.openDB;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -80,37 +82,68 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
 //        mods.setConte
         notas.setText(notes);
     }
-    //TODO
-    // actualizar la lista despues de onclick
 //    Actualiza el ejercicio con los valores
     public void editar(View view){
-        // alert seguro?
         update();
     }
 // Borra la instacia del ejercicio
     public void borrar(View view){
-        // alert seguro?
-        remove();
+        AlertDialog diaBox = crearAlertaBorrar();
+        diaBox.show();;
     }
 
     public void update(){
-        fecha = getFecha();
-        nombreEj = String.valueOf(ejNombre.getText());
-        setNum = num_set;
-        repsDone = Integer.valueOf(String.valueOf(reps.getText()));
-        pesoDone = Double.valueOf(String.valueOf(kilos.getText()));
-        notes = String.valueOf(notas.getText()).trim();
-        Progreso progreso = new Progreso(fecha, nombreEj, setNum, repsDone, rpeDone, pesoDone, notes, set_mod);
-        progDao.update(progreso);
-        Toast.makeText(this, "Actualizado!", Toast.LENGTH_LONG);
-        finish();
+        if (reps.getText().toString().isEmpty() || kilos.getText().toString().isEmpty()) {
+            crearAlerta("No se puede continuar.", "Debes introducir peso y reps");
+        } else {
+            fecha = getFecha();
+            nombreEj = String.valueOf(ejNombre.getText());
+            setNum = num_set;
+            repsDone = Integer.valueOf(String.valueOf(reps.getText()));
+            pesoDone = Double.valueOf(String.valueOf(kilos.getText()));
+            notes = String.valueOf(notas.getText()).trim();
+            Progreso progreso = new Progreso(fecha, nombreEj, setNum, repsDone, rpeDone, pesoDone, notes, set_mod);
+            progDao.update(progreso);
+            Toast.makeText(this, "Actualizado!", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     public void remove(){
         progDao.delete(prog);
-        Toast.makeText(this, "Eliminado!", Toast.LENGTH_LONG);
+        Toast.makeText(this, "Eliminado!", Toast.LENGTH_LONG).show();
+        finish();
+    }
+    // Este metodo es un constructor de alertas
+    public void crearAlerta(String titulo, String mensaje){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle(titulo)
+                .setMessage(mensaje)
+                .setPositiveButton("Aceptar", null)
+                .create()
+                .show();
     }
 
+    // Este metodo es un constructor de alertas para confirmar el borrado
+    public AlertDialog crearAlertaBorrar(){
+        AlertDialog alerta = new AlertDialog.Builder(this)
+                .setTitle("Borrar")
+                .setMessage("Seguro que quieres eliminar este set?")
+                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        remove();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+
+        return alerta;
+    }
 //    Inicia y rellena el spinner con los mods
     public void fillSpinnerMods() {
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -195,7 +228,7 @@ public class UpdateDeleteActivity extends AppCompatActivity implements AdapterVi
 //    public void onPointerCaptureChanged(boolean hasCapture) {
 //        super.onPointerCaptureChanged(hasCapture);
 //    }
-//
+
 //  Devuelve la fecha formateada de "hoy"
     public String getFecha(){
         String formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd MMM yy"));

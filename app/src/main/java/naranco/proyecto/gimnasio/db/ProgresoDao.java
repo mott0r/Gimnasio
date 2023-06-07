@@ -14,7 +14,7 @@ public interface ProgresoDao {
     List<Progreso> getAll();
 
 //    devuelve el progreso entero del ejercicio metido
-    @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj")
+    @Query("SELECT * FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC")
     List<Progreso> getAllFromName(String nombreEj);
 
 //    Devuelve la ultima instacia guardada del ejercicio
@@ -24,6 +24,9 @@ public interface ProgresoDao {
 //    Devuelve el numero de sets de la ultima instacia del ejercicio
     @Query("SELECT setNum FROM progreso WHERE nombreEj LIKE :nombreEj ORDER BY fecha DESC LIMIT 1")
     int getNumSet(String nombreEj);
+// Elimina toda la tabla
+    @Query("DELETE FROM progreso")
+    void deleteALlProgreso();
 
 //    @Query("SELECT * FROM progreso WHERE fecha IN (:dia)")
 //    List<ProgresoActivity> loadAllByFecha(String[] dia);

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="mods">
-        <item>Ninguno</item>
+        <item>Sin mods</item>
         <item>SuperSet</item>
         <item>Drop Set</item>
         <item>Cluster Set</item>
         <item>Negative</item>
         <item>Speed</item>
         <item>Forced</item>
+        <item>AMRAP</item>
     </string-array>
     <string-array name="movimientos">
         <item>Push</item>

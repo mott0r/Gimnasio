@@ -20,12 +20,14 @@ import naranco.proyecto.gimnasio.R;
 import naranco.proyecto.gimnasio.db.Ejercicio;
 import naranco.proyecto.gimnasio.db.EjercicioDao;
 import naranco.proyecto.gimnasio.db.GimnasioDatabase;
+import naranco.proyecto.gimnasio.db.ProgresoDao;
 
 public class ElegirEjercicioActivity extends AppCompatActivity {
     Button addEx;
     private String nombreEj;
     public GimnasioDatabase db;
     private EjercicioDao ejDao;
+    private ProgresoDao progDao;
     private List<Ejercicio> ejs;
     private LinearLayout linearLayout;
 
@@ -36,7 +38,6 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         addEx = findViewById(R.id.btn_addEjercicio);
 
         openDB();
-        fillDB();
         cargarEjercicios();
         listarEjercicios();
     }
@@ -52,18 +53,19 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
     public void openDB(){
         db = GimnasioDatabase.openDB(this);
         ejDao = db.ejDao();
+        progDao = db.progDao();
     }
 
 //  Mete ejercicios en la base de datos para comprobar funcionalidad
 //    Irrelevante, pero se mantiene para futuras pruebas
-    public void fillDB(){
+//    public void fillDB(){
 //        Ejercicio ej1 = new Ejercicio("BenchPress", "Push", "Barbell");
 //        Ejercicio ej2 = new Ejercicio("Squat", "Push", "Barbell");
 //        Ejercicio ej3 = new Ejercicio("OHP", "Push", "Barbell");
 //        ejDao.insert(ej1);
 //        ejDao.insert(ej2);
 //        ejDao.insert(ej3);
-    }
+//    }
 //    Hace una llamada al objeto para contactar con la base de datos y
 //    recoge una lista con todos los ejercicios
     public void cargarEjercicios(){
@@ -79,6 +81,10 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
         for(Ejercicio x : ejs){
             TextView newTextView = new TextView(this);
             newTextView.setText(x.getNombre() + "    " +x.getMovimiento() + "    " + x.getEquipo());
+            newTextView.setTextSize(16);
+
+            Button buttonEdit = new Button(this);
+            buttonEdit.setText("KAKAKAKA");
             newTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,4 +111,33 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
     public void limpiarLayout(){
         linearLayout.removeAllViewsInLayout();
     }
+//    public void borrarTodo(View v){
+//        crearAlertaBorrar();
+//    }
+//
+//    public void removeAll(){
+//        ejDao.deleteALlEjercicios();
+//        progDao.deleteALlProgreso();
+//    }
+//
+//    // Este metodo es un constructor de alertas para confirmar el borrado
+//    public AlertDialog crearAlertaBorrar(){
+//        AlertDialog alerta = new AlertDialog.Builder(this)
+//                .setTitle("Se borraran todos los ejercicios y progreso")
+//                .setMessage("Seguro que quieres borrar t odo?")
+//                .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                        removeAll();
+//                        dialog.dismiss();
+//                    }
+//                })
+//                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                })
+//                .create();
+//
+//        return alerta;
+//    }
 }

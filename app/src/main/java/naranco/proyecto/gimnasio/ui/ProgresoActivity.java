@@ -40,6 +40,13 @@ public class ProgresoActivity extends AppCompatActivity implements Serializable 
         cargarProgreso();
         listarProgreso();
     }
+//  Este metodo asegura que se muestre la informacion actualizada despues de editar
+    protected void onRestart() {
+        super.onRestart();
+        limpiarLayout();
+        cargarProgreso();
+        listarProgreso();
+    }
 //    Abre la base de datos y carga el objeto de acceso que llama a un metodo que devuelve
 //    todos los datos del ejercicio que se estaba haciendo en una lista
     public void cargarProgreso(){
@@ -69,6 +76,10 @@ public class ProgresoActivity extends AppCompatActivity implements Serializable 
             });
             linearLayout.addView(newTextView);
         }
+    }
+    // Quita todos los textViews agregados en "listarProgreso"
+    public void limpiarLayout(){
+        linearLayout.removeAllViewsInLayout();
     }
 
 //    Abre una actividad que manda los valores del textView seleccionado
