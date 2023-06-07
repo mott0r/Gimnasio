@@ -10,12 +10,12 @@ import android.widget.Button;
 import naranco.proyecto.gimnasio.ui.ElegirEjercicioActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Button empezar;
+    private Button elegEj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        empezar = findViewById(R.id.empezar);
+        elegEj = findViewById(R.id.btnElegirEj);
     }
 
 //  Pulsando el boton empezar, lanza la actividad para elegir el ejercicio a realizar
