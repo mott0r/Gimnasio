@@ -80,7 +80,7 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
     // Crea y comienza el temporizador de descando por cada ejercicio
 //    90s reduciendo 1s
     public void startTemporizador() {
-        new CountDownTimer(9000, 1000) {
+        new CountDownTimer(90000, 1000) {
             // Lo que hace el temporizador con cada intervalo de cuenta atras (1s)
             //Muestra el contenido del temporizador en el EditText "tiempo"
             public void onTick(long millisUntilFinished) {
