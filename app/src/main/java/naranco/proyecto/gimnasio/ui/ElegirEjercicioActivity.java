@@ -83,8 +83,6 @@ public class ElegirEjercicioActivity extends AppCompatActivity {
             newTextView.setText(x.getNombre() + "    " +x.getMovimiento() + "    " + x.getEquipo());
             newTextView.setTextSize(16);
 
-            Button buttonEdit = new Button(this);
-            buttonEdit.setText("KAKAKAKA");
             newTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

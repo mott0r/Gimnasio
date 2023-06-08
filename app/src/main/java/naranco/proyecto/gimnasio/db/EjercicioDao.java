@@ -12,6 +12,10 @@ import java.util.List;
 public interface EjercicioDao {
     @Query("SELECT * FROM ejercicios")
     List<Ejercicio> getAll();
+
+    @Query("SELECT nombre FROM ejercicios")
+    List<String> getAllNombres();
+
 // Pruebas iniciales para comprobar el funcionamiento
 
 //    @Query("SELECT * FROM progreso WHERE fecha IN (:dia)")

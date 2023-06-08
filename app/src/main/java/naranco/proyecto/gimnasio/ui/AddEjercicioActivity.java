@@ -4,6 +4,7 @@ import static naranco.proyecto.gimnasio.db.GimnasioDatabase.db;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import naranco.proyecto.gimnasio.R;
 import naranco.proyecto.gimnasio.db.Ejercicio;
@@ -22,6 +26,8 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
     private Spinner movimiento, equipo;
     private Button fin;
     private EjercicioDao ejDao;
+    private List nombres;
+    private String nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +37,11 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
         movimiento = findViewById(R.id.spinnerMovimiento);
         equipo = findViewById(R.id.spinnerEquipo);
         fillSpinners();
-
+        ejDao = db.ejDao();
         fin = findViewById(R.id.btnFinalizar);
     }
+
+
 
 //    Mete los valores que van a usar los dos spinners de la actividad para
 //            que el usuario pueda personalizar los ejercicios que cree
@@ -70,13 +78,31 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
 //    ejercicio en la base de datos
 //    cierra la actividad cuando se pulsa el boton "Finalizar"
     public void fin(View view){
-        String nombre = String.valueOf(ejNombre.getText());
+        nombre = String.valueOf(ejNombre.getText());
         String mov = (String) movimiento.getSelectedItem();
         String eq = (String) equipo.getSelectedItem();
+        if(checkNombre(nombre)){
+            ejDao.insert(new Ejercicio(nombre, mov, eq));
+            finish();
+        }
+    }
+    //    Comprueba que el nombre del ejercicio no ha sido utilizado previamente
+    public boolean checkNombre(String name){
+        nombres = ejDao.getAllNombres();
 
-        ejDao = db.ejDao();
-        ejDao.insert(new Ejercicio(nombre, mov, eq));
+        if(nombres.contains(name)){
+           crearAlerta("Error", "Ese nombre ya existe, introduce otro.");
+           return false;
+       }
+       return true;
+    }
 
-        finish();
+    public void crearAlerta(String titulo, String mensaje){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle(titulo)
+                .setMessage(mensaje)
+                .setPositiveButton("Aceptar", null)
+                .create()
+                .show();
     }
 }

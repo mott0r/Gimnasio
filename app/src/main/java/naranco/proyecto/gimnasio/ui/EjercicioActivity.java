@@ -117,6 +117,11 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                 .create()
                 .show();
     }
+//    Constructor de Toast
+    public void crearToast(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
 //    Llama al objeto de acceso a la base de datos y recoge el numero del ultimo set realizado
 //    Usado para evitar tener sets duplicados ya que es una clave primaria
     public void numSetDateEx(){
@@ -173,7 +178,6 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
 
 //    Este metodo inicia el seekbar para el RPE
 
-    // TODO fix this fucker + add explanation
     public void setSeekBar(){
         rpe.setOnSeekBarChangeListener(
             new SeekBar.OnSeekBarChangeListener() {
@@ -186,34 +190,36 @@ public class EjercicioActivity extends AppCompatActivity implements AdapterView.
                     // 10, 9.5, 9, 8.5, 8, 7.5, 7 = 7
                     prog += 1;
                     switch(prog) {
-                        case 0:
+                        case 1:
                             rpeDone = (double) 7;
                             break;
 
-                        case 1:
+                        case 2:
                             rpeDone = (double) 7.5;
                             break;
 
-                        case 2:
+                        case 3:
                             rpeDone = (double) 8;
                             break;
 
-                        case 3:
+                        case 4:
                             rpeDone = (double) 8.5;
                             break;
 
-                        case 4:
+                        case 5:
                             rpeDone = (double) 9;
                             break;
 
-                        case 5:
+                        case 6:
                             rpeDone = (double) 9.5;
                             break;
 
-                        case 6:
+                        case 7:
                             rpeDone = (double) 10;
                             break;
                     }
+                    crearToast(String.valueOf(rpeDone));
+
                 }
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar){

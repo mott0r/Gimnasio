@@ -21,6 +21,7 @@
     <string name="delete">Borrar</string>
     <string name="deleteAll">Borrar Todo</string>
     <string name="editarBorrar">Quieres editar o borrar?</string>
+    <string name="nombreUnico">El nombre tiene que ser único para el ejercicio (no puede estar repetido)</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
