@@ -93,7 +93,10 @@ public class AddEjercicioActivity extends AppCompatActivity implements AdapterVi
         if(nombres.contains(name)){
            crearAlerta("Error", "Ese nombre ya existe, introduce otro.");
            return false;
-       }
+        } else if(name.isEmpty()){
+            crearAlerta("Error", "El nombre no puede estar vacío.");
+            return false;
+        }
        return true;
     }
 
