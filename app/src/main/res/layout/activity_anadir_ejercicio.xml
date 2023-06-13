@@ -11,34 +11,38 @@
         android:id="@+id/etEjercicio"
         android:layout_width="273dp"
         android:layout_height="53dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="88dp"
         android:background="#BAB7B7"
         android:ems="10"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
 
     <TextView
         android:id="@+id/tvNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="48dp"
         android:text="@string/nombre"
         app:layout_constraintBottom_toTopOf="@+id/etEjercicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <TextView
         android:id="@+id/tvMovimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:text="@string/movimiento"
         app:layout_constraintBottom_toTopOf="@+id/spinnerMovimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEjercicio" />
 
@@ -46,9 +50,9 @@
         android:id="@+id/spinnerMovimiento"
         android:layout_width="316dp"
         android:layout_height="45dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="44dp"
         app:layout_constraintBottom_toTopOf="@+id/tvEquipo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEjercicio" />
 
@@ -56,31 +60,32 @@
         android:id="@+id/tvEquipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/equipo"
         app:layout_constraintBottom_toTopOf="@+id/spinnerEquipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerEquipo"
         android:layout_width="316dp"
         android:layout_height="45dp"
-        android:layout_marginStart="44dp"
         android:layout_marginBottom="184dp"
         app:layout_constraintBottom_toTopOf="@+id/btnFinalizar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnFinalizar"
         android:layout_width="354dp"
         android:layout_height="79dp"
-        android:layout_marginStart="28dp"
         android:layout_marginBottom="36dp"
         android:backgroundTint="#FFC107"
         android:onClick="fin"
         android:text="@string/fin"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

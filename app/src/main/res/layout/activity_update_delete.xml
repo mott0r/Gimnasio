@@ -12,37 +12,41 @@
         android:id="@+id/ejercicioNombre"
         android:layout_width="151dp"
         android:layout_height="49dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:background="#BAB7B7"
         android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-    android:id="@+id/tiempo"
-    android:layout_width="151dp"
-    android:layout_height="49dp"
-    android:layout_marginStart="48dp"
-    android:layout_marginTop="40dp"
-    android:background="#BAB7B7"
-    app:layout_constraintStart_toEndOf="@+id/ejercicioNombre"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tiempo"
+        android:layout_width="151dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
+        android:background="#BAB7B7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ejercicioNombre"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etKilos"
         android:layout_width="100dp"
         android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="212dp"
         android:background="#BAB7B7"
         android:ems="10"
         android:gravity="center"
         android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
+    <TextView
     android:id="@+id/tvKg"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -84,27 +88,28 @@
         android:id="@+id/etReps"
         android:layout_width="49dp"
         android:layout_height="49dp"
-        android:layout_marginStart="132dp"
         android:layout_marginTop="120dp"
         android:background="#BAB7B7"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<EditText
-    android:id="@+id/etNotas"
-    android:layout_width="346dp"
-    android:layout_height="71dp"
-    android:layout_marginStart="28dp"
-    android:layout_marginBottom="148dp"
-    android:background="#BAB7B7"
-    android:ems="10"
-    android:gravity="start|top"
-    android:inputType="textMultiLine"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/etNotas"
+        android:layout_width="332dp"
+        android:layout_height="169dp"
+        android:layout_marginBottom="148dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 <TextView
     android:id="@+id/tvNotas"
@@ -116,16 +121,17 @@
     app:layout_constraintBottom_toTopOf="@+id/etNotas"
     app:layout_constraintStart_toStartOf="parent" />
 
-<Spinner
-    android:id="@+id/spinnerMods"
-    android:layout_width="147dp"
-    android:layout_height="49dp"
-    android:layout_marginTop="120dp"
-    android:layout_marginEnd="32dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <Spinner
+        android:id="@+id/spinnerMods"
+        android:layout_width="147dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
+    <TextView
     android:id="@+id/tvMods"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -134,31 +140,33 @@
     app:layout_constraintBottom_toTopOf="@+id/spinnerMods"
     app:layout_constraintEnd_toEndOf="parent" />
 
-<SeekBar
-    android:id="@+id/seekBarRpe"
-    style="@style/Widget.AppCompat.SeekBar.Discrete"
-    android:layout_width="306dp"
-    android:layout_height="32dp"
-    android:layout_marginStart="48dp"
-    android:layout_marginBottom="92dp"
-    android:max="6"
-    android:progress="1"
-    android:progressTint="#FFD54F"
-    android:rotation="0"
-    app:layout_constraintBottom_toTopOf="@+id/tvNotas"
-    app:layout_constraintStart_toStartOf="parent" />
+    <SeekBar
+        android:id="@+id/seekBarRpe"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="306dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="36dp"
+        android:max="6"
+        android:progress="0"
+        android:progressTint="#FFD54F"
+        android:rotation="0"
+        app:layout_constraintBottom_toTopOf="@+id/tvNotas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-<TextView
-    android:id="@+id/tvSet"
-    android:layout_width="49dp"
-    android:layout_height="49dp"
-    android:layout_marginStart="32dp"
-    android:layout_marginTop="120dp"
-    android:textSize="16sp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvSet"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="120dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<Button
+    <Button
     android:id="@+id/btnDel"
     android:layout_width="131dp"
     android:layout_height="69dp"

@@ -9,8 +9,8 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="374dp"
-        android:layout_height="572dp"
+        android:layout_width="314dp"
+        android:layout_height="574dp"
         android:layout_marginTop="64dp"
         android:background="#BAB7B7"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
             android:id="@+id/linLayoutProg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
     </ScrollView>
 
     <TextView
