@@ -21,8 +21,8 @@
 
     <TextView
         android:id="@+id/tiempo"
-        android:layout_width="151dp"
-        android:layout_height="49dp"
+        android:layout_width="109dp"
+        android:layout_height="47dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="40dp"
         android:background="#BAB7B7"
@@ -193,13 +193,13 @@
 
     <TextView
         android:id="@+id/lastDay"
-        android:layout_width="152dp"
-        android:layout_height="53dp"
+        android:layout_width="137dp"
+        android:layout_height="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintVertical_bias="0.295" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
