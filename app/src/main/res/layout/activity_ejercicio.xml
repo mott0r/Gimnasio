@@ -34,15 +34,15 @@
 
     <EditText
         android:id="@+id/etKilos"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
+        android:layout_width="101dp"
+        android:layout_height="50dp"
         android:layout_marginTop="204dp"
         android:background="#BAB7B7"
         android:ems="10"
         android:gravity="center"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,9 +80,10 @@
         android:id="@+id/tvReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
         android:text="@string/reps"
         app:layout_constraintBottom_toTopOf="@+id/etReps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -193,13 +194,13 @@
 
     <TextView
         android:id="@+id/lastDay"
-        android:layout_width="137dp"
-        android:layout_height="45dp"
+        android:layout_width="135dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.307" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
